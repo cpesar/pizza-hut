@@ -5,10 +5,11 @@ const {
   getPizzaById,
   createPizza,
   updatePizza,
-  deletePizza
+  deletePizza,
 } = require('../../controllers/pizza-controller');
 
 //Set up GET all and POST at api/pizzas
+// http://localhost:3001/api/pizzas
 router
   .route('/')
   .get(getAllPizza)

@@ -1,7 +1,7 @@
 const { Pizza } = require('../models');
 
 const pizzaController = {
-  
+
   // Get all pizzas
   getAllPizza(req, res){
     Pizza.find({})
@@ -69,7 +69,7 @@ const pizzaController = {
         }
         res.json(dbPizzaData);
       })
-      .catch(err => res.status(400),json(err));
+      .catch(err => res.status(400).json(err));
   }
 
 
