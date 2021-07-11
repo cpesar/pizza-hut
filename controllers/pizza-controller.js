@@ -18,7 +18,6 @@ const pizzaController = {
   getPizzaById({ params }, res){
     Pizza.findOne({ _id: params.id })
     .then(dbPizzaData => {
-      //If no pizza is found send 404 error
       if(!dbPizzaData) {
         res.status(404).json({ message: 'No pizza found with this id' });
         return;
@@ -59,7 +58,7 @@ const pizzaController = {
 
 
 
-  //Delete Pizza
+  // Delete Pizza
   deletePizza({ params }, res){
     Pizza.findOneAndDelete({ _id: params.id })
       .then(dbPizzaData => {
