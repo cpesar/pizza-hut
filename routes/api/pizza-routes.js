@@ -17,6 +17,7 @@ router
 
 
 // Set up GET one, PUT, and DELETE at api/pizzas/:id
+// http://localhost:3001/api/pizzas/:id
 router 
   .route('/:id')
   .get(getPizzaById)

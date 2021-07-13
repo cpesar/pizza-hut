@@ -2,6 +2,7 @@
 
 //IMPORT DEPENDENCIES
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 
 
@@ -19,7 +20,10 @@ const PizzaSchema = new Schema (
   createdAt: {
     type: Date,
     //If no date is provided, the Date.now function will execute and provide a timestamp
-    default: Date.now
+    default: Date.now,
+    // Add a getter
+      // Every time we retrieve a pizza, the createdAt field will be formatted by the dateFormat() function
+    get: (createdAtVal) => dateFormat(createdAtVal)
   },
 
   size: {
@@ -43,6 +47,7 @@ const PizzaSchema = new Schema (
 {
   toJSON: {
     virtuals: true,
+    getters: true
   },
   id: false
 }

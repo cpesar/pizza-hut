@@ -32,7 +32,8 @@ const commentController = {
   // 2. Returns the data
   // 3. Uses the $pull operation to remove the comment from the associated pizza
   // 4. Return the updated pizza data
-  removeComment({ params }, res) {
+  removeComment({ params, }, res) {
+    console.log(params);
     Comment.findOneAndDelete ({ _id: params.commentId })
       .then(deletedComment => {
         if(!deletedComment){
@@ -41,7 +42,7 @@ const commentController = {
         return Pizza.findOneAndUpdate(
           { _id: params.pizzaId },
           { $pull: { comments: params.commentId }},
-          { new: True }
+          { new: true }
         );
       })
       .then(dbPizzaData => {
@@ -51,7 +52,11 @@ const commentController = {
         }
         res.json(dbPizzaData);
       })
-      .catch(err => res.json(err));
+      // .catch(err => res.json(err));
+      .catch(err => {
+        console.log(err)
+        res.json(err)
+      });
   }
 };
 
