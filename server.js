@@ -13,7 +13,8 @@ app.use(require('./routes'));
 // Tells Mongoose which db we went to connect to
   // If MONGODB_URI exists, it will use that
   // Otherwise it will short circut to the local MongoDB server's mongodb://localhost/pizza-hut'
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pizza-hut', {
+  // If there is an error when trying to reopen this app, it is likely because it is labeled here as `pizza-hunt` not `pizza-hut`
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pizza-hunt', {
   useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true  
