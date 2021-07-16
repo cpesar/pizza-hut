@@ -10,11 +10,19 @@ const dateFormat = require('../utils/dateFormat');
 const PizzaSchema = new Schema (
 {
   pizzaName: {
-    type: String
+    type: String,
+    // This will require data to be added for this field
+    // required: 'You need to provide a pizza name',
+    required: true,
+    // This will trim the white-space before/after an input
+    trim: true
   },
 
   createdBy: {
-    type: String
+    type: String,
+    required: true,
+    // required: 'You need to tell us who you are',
+    trim: true
   },
 
   createdAt: {
@@ -28,8 +36,12 @@ const PizzaSchema = new Schema (
 
   size: {
     type: String,
+    required: true,
+    // Enumerable: A set of data that can be iterated over, similar to a for loop
+    enum: ['Personal', 'Small', 'Medium', 'Large', 'Extra Large'],
     default: 'Large'
   },
+  
 
   toppings: [],
 
